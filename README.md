@@ -67,28 +67,27 @@ For the second activity, I used Zenmap to perform network discovery on my local 
 I first used the Windows `ipconfig` command to identify my local IP address and LAN subnet. I then entered the subnet into Zenmap and selected Ping Scan to identify active hosts.
 
 I found out only one live active host which was scanned, which is;
-
-```text
 192.168.56.1
 The results did not include a MAC address.
 
 After completing the scan, I opened the Topology section in Zenmap, enabled the legend and saved the network topology in PDF format as required by the practical task.
 
-Note: The actual subnet, number of hosts and addresses should be replaced with the results from my own network when submitting the report.
+> **Note:** The actual subnet, number of hosts and addresses should be replaced with the results from my own network when submitting the report.
 
-5. Risk Analysis / Impact
+## 5. Risk Analysis / Impact
 
 Based on the information collected during the footprinting and network scanning activities, I identified the following potential risks.
 
-#	Risk / Finding	Evidence / Observation	Potential Impact	Risk Level
-1	Web technology information exposed	WhatWeb identified WordPress and WP Download Manager	Attackers may use exposed technology/version information to identify software requiring further security review	● Medium
-2	Server IP address/Host information exposed	Nslookup networkwalks.com return the domain 192.232.216.135	Revels the public IP address associated with the domain. The IP address can be used for reconnaissance and infrastructure enumeration.	● Low
-3	Server information exposed/disclosure	Curl –I response shows server: Apache and	Exposing the server type gives attacker additional information about the technology stack.	● Low
-4	WAF technology identifiable	Wafw00f identified ModSecurity (SpiderLabs) protecting the target.	Reveals information about the web application’s networkwalkks.com is protected by Modsecurity (SpiderLabs) Web Application Firewall after two requests were made to the target.	● Low
-5	DNS Public IP address information exposed	DNSRecon identified DNS, mail and service-related records	It provides attackers with information about the organization’s DNS infrastructure can assist reconnaissance.	● Medium
-6	Single live hosts visible on local network	Zenmap identified one live hosts with my local LAN network	The discovered host confirms that an active system is reachable. If it exposes open ports or services, an attacker could use this information for further reconnaissance and potentially target vulnerable services.	● Medium
+| # | Risk / Finding | Evidence / Observation | Potential Impact | Risk Level |
+|---|---|---|---|---|
+| 1 | Web technology information exposed | WhatWeb identified WordPress and WP Download Manager | Attackers may use exposed technology/version information to identify software requiring further security review | ● Medium |
+| 2 | Server IP address/Host information exposed | Nslookup `networkwalks.com` return the domain `192.232.216.135` | Revels the public IP address associated with the domain. The IP address can be used for reconnaissance and infrastructure enumeration. | ● Low |
+| 3 | Server information exposed/disclosure | Curl –I response shows server: Apache and | Exposing the server type gives attacker additional information about the technology stack. | ● Low |
+| 4 | WAF technology identifiable | Wafw00f identified ModSecurity (SpiderLabs) protecting the target. | Reveals information about the web application’s networkwalkks.com is protected by Modsecurity (SpiderLabs) Web Application Firewall after two requests were made to the target. | ● Low |
+| 5 | DNS Public IP address information exposed | DNSRecon identified DNS, mail and service-related records | It provides attackers with information about the organization’s DNS infrastructure can assist reconnaissance. | ● Medium |
+| 6 | Single live hosts visible on local network | Zenmap identified one live hosts with my local LAN network | The discovered host confirms that an active system is reachable. If it exposes open ports or services, an attacker could use this information for further reconnaissance and potentially target vulnerable services. | ● Medium |
 
-Risk level key: ● Critical ● Medium ● Low
+**Risk level key:** ● Critical ● Medium ● Low
 
 The risks above are observations from the footprinting and scanning exercises, not confirmed vulnerabilities.
 
@@ -96,47 +95,47 @@ The practical exercises primarily involved information gathering and host discov
 
 Therefore, the presence of information such as a software version, IP address or DNS record does not by itself mean that the system is vulnerable. Further authorized security testing would be required to confirm any actual vulnerability.
 
-6. Recommendations
+## 6. Recommendations
 
 Based on the observations from these activities, I recommend the following security improvements:
 
-1. Review publicly exposed technology information
+### 1. Review publicly exposed technology information
 
 Organizations should regularly review what information about their web technologies, CMS and plugins is publicly visible.
 
-2. Keep software updated
+### 2. Keep software updated
 
 CMS platforms, plugins and other web technologies should be regularly updated and reviewed against current security advisories.
 
-3. Review HTTP headers
+### 3. Review HTTP headers
 
 HTTP response headers should be reviewed to determine whether unnecessary technical information is being exposed.
 
-4. Review DNS records regularly
+### 4. Review DNS records regularly
 
 DNS records should be checked periodically to ensure that only required information and services are publicly exposed.
 
-5. Properly configure and monitor the WAF
+### 5. Properly configure and monitor the WAF
 
 Keep the WAF (ModSecurity) enabled and tuned, since it already blocks naive attacks.
 
-6. Perform regular internal network discovery
+### 6. Perform regular internal network discovery
 
 Organizations should periodically scan their own networks to identify active devices.
 
-7. Investigate unknown devices
+### 7. Investigate unknown devices
 
 Any unexpected device discovered during network scanning should be investigated and verified.
 
-8. Maintain network documentation
+### 8. Maintain network documentation
 
 Network topology and device information should be documented and updated regularly.
 
-9. Perform security testing with authorization
+### 9. Perform security testing with authorization
 
 Reconnaissance and scanning should only be performed against systems and networks where appropriate authorization has been provided.
 
-7. Conclusion
+## 7. Conclusion
 
 During Week 2 of my Cybersecurity & Ethical Hacking internship, I completed practical activities covering footprinting, reconnaissance and network scanning.
 
@@ -149,32 +148,6 @@ The exercises showed me that information gathering is an important part of cyber
 I also learned that technical findings should be documented clearly. A good cybersecurity report should explain what was performed, what was discovered, what the observation means, what risk it may create, and what can be done to reduce that risk.
 
 Finally, I learned that reconnaissance and scanning must always be performed within an authorized scope. These activities were completed as part of the assigned educational cybersecurity lab.
-
-Author
-
-Pentester Name (Cybersecurity Professional): Chinedum Nelson Ariwa
-
-Project Information
-Project: PENETRATION-TESTING-REPORT
-Program/Batch: B083-Networkwalks
-Date: 17 September 2026
-Modules completed: W2-PM1 (Multiple Kali Tools), W2-PM5 (Zenmap Scanning)
-Client/Target: Networkwalks and my own local LAN Network
-Permission secured from client?: Yes
-Phases covered: Phase 1: Reconnaissance & Footprinting; Phase 2: Scanning & Network Discovery; Phase 3-5: In Progress
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 8. Evidences Collected
 <img width="1366" height="728" alt="Window - ScreenPal - 3 25 4 (30)" src="https://github.com/user-attachments/assets/56d2006c-070c-4b6c-a2ad-d2e64ed709de" />
